@@ -33,7 +33,7 @@ module Authority
       # Not using Forwardable because it makes it harder for users to track an ArgumentError
       # back to their authorizer
       Authority.adjectives.each do |adjective|
-        define_method("#{adjective}_by?") { |*args| authorizer.send("#{adjective}_by?", *args) }
+        define_method("#{adjective}_by?") { |*args| authorizer.send("#{adjective}_by?", self, *args) }
       end
     end
     include Definitions
